@@ -1,0 +1,33 @@
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Channel
+metadata:
+  name: cron-to-url-channel
+spec:
+  provisioner:
+    apiVersion: eventing.knative.dev/v1alpha1
+    kind: ClusterChannelProvisioner
+    name: in-memory-channel
+---
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Subscription
+metadata:
+  name: cron-to-url-subscription
+spec:
+  channel:
+    apiVersion: eventing.knative.dev/v1alpha1
+    kind: Channel
+    name: cron-to-url-channel
+  subscriber:
+    dnsName: "https://us-south.functions.cloud.ibm.com/api/v1/web/csantana@us.ibm.com_demo/00-knative/processEvents"
+---
+apiVersion: sources.eventing.knative.dev/v1alpha1
+kind: CronJobSource
+metadata:
+  name: cron-to-url-source
+spec:
+  schedule: "*/2 * * * *"
+  data: '{"message": "Hello world from knative"}'
+  sink:
+    apiVersion: eventing.knative.dev/v1alpha1
+    kind: Channel
+    name: cron-to-url-channel
