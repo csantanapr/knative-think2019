@@ -25,7 +25,7 @@ Configure the ingress for to route traffic from the external domain name
 kubetcl apply -f config-network.yaml
 ```
 
-Deploy the the services
+Deploy the services
 ```
 kubectl apply -f blue-green-demo-config.yaml
 ```
@@ -57,4 +57,21 @@ kubectl apply -f config-network-event-external.yaml
 kubectl apply -f config-network-ext.yaml
 ```
 
+Edit the subcription file `cron-to-url.yaml` and replace with IBM Functions Web Action public URL
+
+Deploy the CronJobSource, channel, and subscription
+```
+kubectl apply -f cron-to-url.yaml
+```
+
+Now should be able to see in the UI Console or UI your `processEvent` Web Action running every 2 minutes
+```
+ibmcloud fn activation list
+```
+Output:
+```
+activations
+50b1f9f27bd0470bb1f9f27bd0370bea processEvent
+6dec841a40c642fbac841a40c632fb67 processEvent
+```
 

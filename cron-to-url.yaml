@@ -18,7 +18,7 @@ spec:
     kind: Channel
     name: cron-to-url-channel
   subscriber:
-    dnsName: "https://us-south.functions.cloud.ibm.com/api/v1/web/csantana@us.ibm.com_demo/00-knative/processEvents"
+    dnsName: "https://<region>.functions.cloud.ibm.com/api/v1/web/<namespace>/default/processEvent"
 ---
 apiVersion: sources.eventing.knative.dev/v1alpha1
 kind: CronJobSource

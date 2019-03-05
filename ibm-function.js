@@ -1,5 +1,9 @@
 function main(param) {
-    let data = param.__method ? param : { content: "empty" }
+    var data = { content: "empty" };
+    if (param.__ow_method) {
+        delete param.cookie
+        data = param
+    }
     let resp = {
         statusCode: 202,
         body: {
