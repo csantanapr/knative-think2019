@@ -41,9 +41,9 @@ metadata:
   namespace: default
 spec:
   traffic:
-  - configurationName: config-demo-blue
-    name: v1
-    percent: 50
-  - configurationName: config-demo-green
-    name: v2
-    percent: 50
+    - configurationName: config-demo-blue
+      name: v1
+      percent: 50
+    - configurationName: config-demo-green
+      name: v2
+      percent: 50
