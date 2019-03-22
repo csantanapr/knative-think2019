@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1alpha1
 kind: Service
 metadata:
-  name: helloworld-go
+  name: helloworld-nodejs
   namespace: default
 spec:
   runLatest:
@@ -9,7 +9,4 @@ spec:
       revisionTemplate:
         spec:
           container:
-            image: gcr.io/knative-samples/helloworld-go
-            env:
-            - name: TARGET
-              value: "Go Sample v1"
+            image: docker.io/csantanapr/webappnodejs-express-run
